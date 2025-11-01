@@ -1,0 +1,13 @@
+<%= render @booking %>
+
+<div>
+  <%= link_to "Edit this booking", edit_vehicle_booking_path(@booking.vehicle, @booking) %> |
+  <%= link_to "Back to vehicle bookings", vehicle_bookings_path(@booking.vehicle) %>
+  <%= link_to "Destroy this booking", vehicle_booking_path(@booking.vehicle, @booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+</div>
+
+<!-- Button to create a new review -->
+<div class="mt-4">
+  <%= link_to "Add Review", new_vehicle_booking_review_path(@booking.vehicle, @booking), class: "btn btn-primary" %>
+
+</div>

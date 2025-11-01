@@ -1,0 +1,10 @@
+<%= render @review %>
+
+<div>
+  <%= link_to "Back to reviews", vehicle_booking_reviews_path(@review.booking.vehicle, @review.booking), class: "btn btn-link" %>
+
+  <%= button_to "Destroy this review", vehicle_booking_review_path(@review.booking.vehicle, @review.booking, @review),
+                method: :delete,
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                class: "btn btn-danger" %>
+</div>

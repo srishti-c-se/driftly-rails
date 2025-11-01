@@ -1,0 +1,10 @@
+<h1>Editing booking</h1>
+
+<%= render "form", booking: @booking %>
+
+<br>
+
+<div>
+  <%= link_to "Show this booking", vehicle_booking_path(@booking.vehicle, @booking) %> |
+  <%= link_to "Back to bookings", vehicle_bookings_path(@booking.vehicle) %>
+</div>

@@ -1,0 +1,9 @@
+<%= render @vehicle %>
+
+<div>
+  <%= link_to "Back to vehicles", vehicles_path, class: "btn btn-secondary" %>
+
+  <%= link_to "Book this vehicle", new_vehicle_booking_path(@vehicle), class: "btn btn-info" %>
+
+  <%= link_to "Destroy this vehicle", vehicle_path(@vehicle), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+</div>
