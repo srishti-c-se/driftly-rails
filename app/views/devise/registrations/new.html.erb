@@ -18,6 +18,11 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%# Add role select %>
+    <%= f.input :admin, label: "I am a", as: :select,
+                collection: [["Renter", true], ["User", false]],
+                include_blank: false,
+                selected: false %>
   </div>
 
   <div class="form-actions">
