@@ -1,0 +1,5 @@
+<div class="container mt-5">
+  <h2>Edit Review</h2>
+  <%= render "form", review: @review %>
+  <%= link_to "Back to Reviews", vehicle_booking_reviews_path(@vehicle, @booking), class: "btn btn-link mt-3" %>
+</div>

@@ -1,0 +1,12 @@
+<h1>Bookings</h1>
+
+<div id="bookings">
+  <% @bookings.each do |booking| %>
+    <%= render booking %>
+    <p>
+      <%= link_to "Show this booking", vehicle_booking_path(booking.vehicle, booking) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New booking", new_vehicle_booking_path(@vehicle) if @vehicle.present? %>

@@ -1,0 +1,82 @@
+<%= simple_form_for(@vehicle) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th><%= f.label :user %></th>
+        <td><%= f.association :user, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :title %></th>
+        <td><%= f.input_field :title, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :brand %></th>
+        <td><%= f.input_field :brand, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :model %></th>
+        <td><%= f.input_field :model, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :year %></th>
+        <td><%= f.input_field :year, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :seats %></th>
+        <td><%= f.input_field :seats, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :transmission %></th>
+        <td><%= f.input_field :transmission, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :fuel_type %></th>
+        <td><%= f.input_field :fuel_type, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :price_per_day %></th>
+        <td><%= f.input_field :price_per_day, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :address %></th>
+        <td><%= f.input_field :address, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :latitude %></th>
+        <td><%= f.input_field :latitude, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :longitude %></th>
+        <td><%= f.input_field :longitude, class: "form-control" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :active %></th>
+        <td><%= f.input_field :active, class: "form-check-input" %></td>
+      </tr>
+
+      <tr>
+        <th><%= f.label :description %></th>
+        <td><%= f.text_area :description, class: "form-control", rows: 4 %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="form-actions mt-3">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

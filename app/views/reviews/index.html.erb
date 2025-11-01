@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h2>Reviews for Booking </h2>
+
+  <% if @reviews.length === 0 || @reviews === nil %>
+    <p>No reviews yet. Be the first to add a review!</p>
+
+  <% else %>
+    <% @reviews.each do |review| %>
+      <div class="card mb-3 p-3">
+        <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
+        <p><strong>Comment:</strong> <%= review.comment %></p>
+        <p>
+          <%= link_to "Edit", edit_vehicle_booking_review_path(@vehicle, @booking, review), class: "btn btn-sm btn-secondary" %>
+          <%= button_to "Delete", vehicle_booking_review_path(@vehicle, @booking, review), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+        </p>
+      </div>
+    <% end %>
+  <% end %>
+
+  <%= link_to "Home", root_path, class: "btn btn-info" %>
+
+  <%= link_to "New Review", new_vehicle_booking_review_path(@vehicle, @booking), class: "btn btn-primary" %>
+</div>
