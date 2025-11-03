@@ -1,4 +1,3 @@
-<h1>Vehicles</h1>
 
 <div style="margin: 20px; display: flex; flex-direction: column; gap: 5px;">
   <table class="table table-bordered table-striped">
@@ -11,17 +10,20 @@
         <th>Seats</th>
         <th>Transmission</th>
         <th>Fuel type</th>
-        <th>Price per day</th>
         <th>Address</th>
-        <th>Latitude</th>
-        <th>Longitude</th>
-        <th>Active</th>
+        <%# <th>Latitude</th> %>
+        <%# <th>Longitude</th> %>
+        <%# <th>Active</th> %>
         <th>Description</th>
+        <th>Price per day</th>
         <th></th>
       </tr>
     </thead>
 
     <tbody>
+    <%# OWNER UI %>
+    <% if current_user.renter?%>
+      <h1>My Vehicles</h1>
       <% @vehicles.each do |vehicle| %>
         <tr>
           <td><%= vehicle.title %></td>
@@ -31,19 +33,43 @@
           <td><%= vehicle.seats %></td>
           <td><%= vehicle.transmission %></td>
           <td><%= vehicle.fuel_type %></td>
-          <td><%= number_to_currency(vehicle.price_per_day, unit: "Rs ") %></td>
           <td><%= vehicle.address %></td>
-          <td><%= vehicle.latitude %></td>
-          <td><%= vehicle.longitude %></td>
-          <td><%= vehicle.active ? "Yes" : "No" %></td>
+          <%# <td><%= vehicle.latitude %></td>
+          <%# <td><%= vehicle.longitude %></td>
+          <%# <td><%= vehicle.active ? "Yes" : "No" %></td>
           <td><%= vehicle.description %></td>
+          <td><%= number_to_currency(vehicle.price_per_day, unit: "Rs ") %></td>
           <td>
             <%= link_to "Show", vehicle, class: "btn btn-primary btn-sm" %>
           </td>
         </tr>
       <% end %>
+      <%= link_to "New Vehicle", new_vehicle_path, class: "btn btn-success" %>
+      <%# USER UI %>
+    <% else %>
+      <h1>Vehicles</h1>
+      <% @vehicles.each do |vehicle| %>
+        <tr>
+          <td><%= vehicle.title %></td>
+          <td><%= vehicle.brand %></td>
+          <td><%= vehicle.model %></td>
+          <td><%= vehicle.year %></td>
+          <td><%= vehicle.seats %></td>
+          <td><%= vehicle.transmission %></td>
+          <td><%= vehicle.fuel_type %></td>
+          <td><%= vehicle.address %></td>
+          <%# <td><%= vehicle.latitude %></td>
+          <%# <td><%= vehicle.longitude %></td>
+          <%# <td><%= vehicle.active ? "Yes" : "No" %></td>
+          <td><%= vehicle.description %></td>
+          <td><%= number_to_currency(vehicle.price_per_day, unit: "Rs ") %></td>
+          <td>
+            <%= link_to "Show", vehicle, class: "btn btn-primary btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
     </tbody>
   </table>
 
-  <%= link_to "New Vehicle", new_vehicle_path, class: "btn btn-success" %>
 </div>
