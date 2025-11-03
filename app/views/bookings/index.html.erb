@@ -9,4 +9,6 @@
   <% end %>
 </div>
 
-<%= link_to "New booking", new_vehicle_booking_path(@vehicle) if @vehicle.present? %>
+<% if current_user.user? %>
+  <%= link_to "New booking", new_vehicle_booking_path(@vehicle) if @vehicle.present? %>
+<% end %>
