@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: "vehicles#index"
+  root "pages#home"
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
