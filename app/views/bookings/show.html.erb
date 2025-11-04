@@ -16,7 +16,6 @@
   <% else %>
     <div class="mt-4">
       <%= link_to "All Bookings", vehicle_bookings_path(@booking.vehicle), class: 'btn btn-primary' %>
-      <%= link_to "Add Review", new_vehicle_booking_review_path(@booking.vehicle, @booking), class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
