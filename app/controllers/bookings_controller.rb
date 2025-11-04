@@ -4,12 +4,25 @@ class BookingsController < ApplicationController
 
   def index
     # @bookings = @vehicle ? @vehicle.bookings : Booking.all
-    if current_user.renter?
-      # Bookings for vehicles owned by the current renter
-      @bookings = Booking.joins(:vehicle).where(vehicles: { user_id: current_user.id })
+    if params[:vehicle_id]
+      @vehicle = Vehicle.find(params[:vehicle_id])
+      # For renter: Show bookings only for THIS specific vehicle
+      if current_user.renter?
+        @bookings = Booking.joins(:vehicle)
+                          .where(vehicle_id: @vehicle.id)
+                          .where(vehicles: { user_id: current_user.id })
+      else
+        # For regular user: Still show ALL their bookings (ignore vehicle filter)
+        @bookings = current_user.bookings
+      end
     else
-      # Bookings made by the user
-      @bookings = current_user.bookings
+      if current_user.renter?
+        # Bookings for vehicles owned by the current renter
+        @bookings = Booking.joins(:vehicle).where(vehicles: { user_id: current_user.id })
+      else
+        # Bookings made by the user
+        @bookings = current_user.bookings
+      end
     end
   end
 

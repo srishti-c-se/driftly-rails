@@ -49,10 +49,12 @@
 
     <!-- Actions for Renter -->
   <% if current_user.renter? && booking.vehicle.user == current_user %>
-    <% if booking.pending? %>
-      <%= button_to "Accept", accept_vehicle_booking_path(booking.vehicle, booking), method: :patch, class: "btn btn-success" %>
-      <%= button_to "Reject", reject_vehicle_booking_path(booking.vehicle, booking), method: :patch, class: "btn btn-danger" %>
-    <% end %>
+    <div class="d-flex gap-3">
+      <% if booking.pending? %>
+        <%= button_to "Accept", accept_vehicle_booking_path(booking.vehicle, booking), method: :patch, class: "btn btn-success" %>
+        <%= button_to "Reject", reject_vehicle_booking_path(booking.vehicle, booking), method: :patch, class: "btn btn-danger" %>
+      <% end %>
+    </div>
 
   <!-- Actions for Normal User -->
   <% elsif current_user == booking.user %>
