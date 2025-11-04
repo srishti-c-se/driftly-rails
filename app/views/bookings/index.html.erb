@@ -1,14 +1,18 @@
-<h1>Bookings</h1>
+<h1>My Bookings</h1>
 
 <div id="bookings">
-  <% @bookings.each do |booking| %>
-    <%= render booking %>
-    <p>
-      <%= link_to "Show this booking", vehicle_booking_path(booking.vehicle, booking) %>
-    </p>
+  <% if @bookings.any?%>
+    <% @bookings.each do |booking| %>
+      <%= render booking %>
+      <p>
+        <%= link_to "More details", vehicle_booking_path(booking.vehicle, booking), class: 'btn btn-primary mt-3' %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>No bookings found.</p>
   <% end %>
 </div>
 
 <% if current_user.user? %>
-  <%= link_to "New booking", new_vehicle_booking_path(@vehicle) if @vehicle.present? %>
+  <%= link_to "New booking", new_vehicle_booking_path(@vehicle), class: 'btn btn-success' if @vehicle.present? %>
 <% end %>

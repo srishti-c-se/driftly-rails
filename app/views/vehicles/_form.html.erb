@@ -36,12 +36,12 @@
 
       <tr>
         <th><%= f.label :transmission %></th>
-        <td><%= f.text_field :transmission, class: "form-control" %></td>
+        <td><%= f.input_field :transmission, collection: ['manual', 'automatic'], class: "form-control" %></td>
       </tr>
 
       <tr>
         <th><%= f.label :fuel_type %></th>
-        <td><%= f.text_field :fuel_type, class: "form-control" %></td>
+        <td><%= f.input_field :fuel_type, collection: ['petrol', 'diesel', 'electric', 'hybrid'], class: "form-control" %></td>
       </tr>
 
       <tr>

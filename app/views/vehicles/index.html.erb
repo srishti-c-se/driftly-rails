@@ -13,7 +13,7 @@
         <th>Address</th>
         <%# <th>Latitude</th> %>
         <%# <th>Longitude</th> %>
-        <%# <th>Active</th> %>
+        <th>Active</th>
         <th>Description</th>
         <th>Price per day</th>
         <th></th>
@@ -36,15 +36,16 @@
           <td><%= vehicle.address %></td>
           <%# <td><%= vehicle.latitude %></td>
           <%# <td><%= vehicle.longitude %></td>
-          <%# <td><%= vehicle.active ? "Yes" : "No" %></td>
+          <td><%= vehicle.active ? "Yes" : "No" %></td>
           <td><%= vehicle.description %></td>
           <td><%= number_to_currency(vehicle.price_per_day, unit: "Rs ") %></td>
           <td>
-            <%= link_to "Show", vehicle, class: "btn btn-primary btn-sm" %>
+            <%= link_to "Details", vehicle, class: "btn btn-primary" %>
+            <%# <%= link_to "Bookings", vehicle_bookings_path(vehicle), class: "btn btn-success mt-3" %>
           </td>
         </tr>
+
       <% end %>
-      <%= link_to "New Vehicle", new_vehicle_path, class: "btn btn-success" %>
       <%# USER UI %>
     <% else %>
       <h1>Vehicles</h1>
@@ -60,16 +61,27 @@
           <td><%= vehicle.address %></td>
           <%# <td><%= vehicle.latitude %></td>
           <%# <td><%= vehicle.longitude %></td>
-          <%# <td><%= vehicle.active ? "Yes" : "No" %></td>
+          <td><%= vehicle.active ? "Yes" : "No" %></td>
           <td><%= vehicle.description %></td>
           <td><%= number_to_currency(vehicle.price_per_day, unit: "Rs ") %></td>
           <td>
-            <%= link_to "Show", vehicle, class: "btn btn-primary btn-sm" %>
+            <%= link_to "Details", vehicle, class: "btn btn-primary btn-sm" %>
+            <%= link_to "Book", new_vehicle_booking_path(vehicle), class: "btn btn-primary btn-sm mt-3" %>
           </td>
         </tr>
+        <div class="mt-3">
+        </div>
       <% end %>
     <% end %>
     </tbody>
   </table>
-
+  <%# display create vehicle button for owner %>
+  <div class="mt-3">
+    <% if current_user.renter? %>
+      <%= link_to "New Vehicle", new_vehicle_path, class: "btn btn-success" %>
+      <%= link_to "All Bookings", bookings_path, Class: "btn btn-success" %>
+    <% else %>
+      <%= link_to "Bookings", bookings_path, Class: "btn btn-success mt-3" %>
+  </div>
+  <% end %>
 </div>
