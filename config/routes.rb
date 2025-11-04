@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "vehicles#index"
 
   resources :bookings, only: [:index]
-  # resources :reviews, only: [:index]
+  resources :reviews, only: [:index]
 
   resources :vehicles do
     resources :bookings do
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         patch :reject   # renter rejects a booking
         patch :cancel   # user cancels a booking
       end
-      resources :reviews, only: [:new, :create, :index]
+      resources :reviews
     end
   end
 
