@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   get 'messages/create'
   resources :reviews
   devise_for :users

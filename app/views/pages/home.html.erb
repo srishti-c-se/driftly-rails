@@ -1,3 +1,6 @@
+<h2 class="text-center my-4">Your Premium Car Rental in Mauritius</h2>
+  <p class="text-center my-4">Experience unmatched comfort, style, and service — wherever the road takes you.</p>
+
 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
 
   <!-- Indicators -->
@@ -6,7 +9,6 @@
     <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Car2"></button>
     <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Car3"></button>
   </div>
-
 
   <!-- Carousel items -->
   <div class="carousel-inner">
@@ -30,4 +32,31 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+</div>
+
+<h2 class="text-center my-4">Choose Your Ride</h2>
+
+<div class="vehicles-section">
+  <div class="row">
+    <% @featured_vehicles.each do |vehicle| %>
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          <%# Replace with vehicle photo if available %>
+          <%= image_tag "car2.jpg", class: "card-img-top", alt: vehicle.title %>
+
+          <div class="card-body">
+            <h5 class="card-title"><%= vehicle.title %></h5>
+            <p class="card-text"><%= vehicle.description.truncate(100) %></p>
+            <p>Seats: <%= vehicle.seats %> | Transmission: <%= vehicle.transmission %> | Fuel: <%= vehicle.fuel_type %></p>
+            <p><strong>Price per day:</strong> Rs <%= vehicle.price_per_day %></p>
+            <p><i class="bi bi-geo-alt"></i> <%= vehicle.address %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="text-center mt-3">
+  <%= link_to "See All Vehicles", vehicles_path, class: "btn btn-light px-4 py-2" %>
 </div>
