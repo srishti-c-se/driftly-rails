@@ -1,12 +1,42 @@
+/* Navbar container */
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: #000;   // dark background
+  color: white;             // default text color
 }
 
+.navbar-logo {
+  max-height: 100px;  // adjust as needed
+  width: 100px;       // keeps aspect ratio
+}
+
+
+.navbar-lewagon .navbar-brand {
+  color: white;             // make brand text (if any) white
+}
+
+/* Navbar links */
+.navbar-lewagon .nav-link {
+  color: white !important;  // ensures links are white
+}
+
+.navbar-lewagon .nav-link:hover {
+  color: red !important;   // lighter on hover
+}
+
+/* Navbar collapse (menu) */
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+/* Buttons inside navbar (e.g., login) */
+.navbar-lewagon .btn {
+  color: white;
+  background-color: transparent;  // transparent by default
+  border: 1px solid white;
+}
+
+.navbar-lewagon .btn:hover {
+  color: black;
+  background-color: white;
 }
