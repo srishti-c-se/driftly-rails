@@ -1,0 +1,36 @@
+<!-- Reviews Section -->
+<div class="mt-5">
+
+   <!-- Add Review Button -->
+   <% if vehicle.bookings.exists?(user: current_user) %>
+    <%= link_to "Add Review", new_vehicle_booking_review_path(vehicle, vehicle.bookings.find_by(user: current_user)), class: "btn btn-primary" %>
+   <% end %>
+
+  <h3>Reviews</h3>
+
+  <% vehicle_reviews = @vehicle.reviews.includes(:user) %>
+
+  <% if vehicle_reviews.empty? %>
+    <p>No reviews yet. Be the first to review!</p>
+  <% else %>
+    <% vehicle_reviews.each do |review| %>
+      <div class="card mb-3 p-3">
+        <p><strong>User:</strong> <%= review.user.first_name %> <%= review.user.last_name %></p>
+        <p><strong>Rating:</strong> <%= review.rating %> / 5</p>
+        <p><strong>Comment:</strong> <%= review.comment %></p>
+
+        <!-- Buttons -->
+        <% if current_user == review.user %>
+          <%= link_to "Edit", edit_vehicle_booking_review_path(@vehicle, review.booking, review), class: "btn btn-sm btn-secondary" %>
+        <% end %>
+
+        <% if current_user == review.user || current_user.renter? %>
+          <%= button_to "Delete", vehicle_booking_review_path(@vehicle, review.booking, review),
+                        method: :delete,
+                        data: { turbo_confirm: "Are you sure?" },
+                        class: "btn btn-sm btn-danger" %>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

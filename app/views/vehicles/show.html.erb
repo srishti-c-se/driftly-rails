@@ -66,4 +66,10 @@
     <% end %>
 
   </div>
+
+  <%# Reviews %>
+  <%# <%= render @vehicle %>
+
+  <%= render partial: "reviews", locals: { vehicle: @vehicle, current_user: current_user } %>
+
 </div>
