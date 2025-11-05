@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'home/index'
   get 'messages/create'
   devise_for :users
-  root to: "vehicles#index"
 
   resources :bookings, only: [:index]
   resources :reviews, only: [:index]

@@ -1,0 +1,63 @@
+body {
+  background-color: black;
+  color: white; /* optional: makes text readable */
+}
+
+.card.mb-3 {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  color: #fff;
+  margin: 20px auto;
+  border: 1px solid white;
+
+  max-width: 1500px;
+  min-height: 400px;
+}
+
+.card.mb-3 image {
+  flex: 1 1 45%;
+  min-width: 300px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.vehicle-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  padding: 20px;
+}
+
+.vehicle-card-info {
+  flex: 1 1 55%;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card.mb-3 title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  padding-left: 15px;
+}
+
+.card.mb-3 p {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 12px;
+  padding-left: 10px;
+}
+
+.card.mb-3 .card-product-infos {
+  flex: 1 1 60%;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
