@@ -1,22 +1,25 @@
 <div id="<%= dom_id booking %>">
   <p>
     <strong>User:</strong>
-    <%= booking.user_id %>
+    <%= booking.user.first_name %> <%= booking.user.last_name %> (<%= booking.user.email %>)
   </p>
 
   <p>
     <strong>Vehicle:</strong>
-    <%= booking.vehicle_id %>
+    <%# <%= booking.vehicle_id %> %>
+    <%= link_to booking.vehicle.title, vehicle_path(booking.vehicle) %>
   </p>
 
   <p>
     <strong>Start date:</strong>
     <%= booking.start_date %>
+    <%= booking.start_date.strftime("%d %b %Y") %><br>
   </p>
 
   <p>
     <strong>End date:</strong>
     <%= booking.end_date %>
+    <%= booking.end_date.strftime("%d %b %Y") %>
   </p>
 
   <p>
@@ -36,12 +39,28 @@
 
   <p>
     <strong>Status:</strong>
-    <%= booking.status %>
+    <%= booking.status  %>
   </p>
 
   <p>
     <strong>Payment status:</strong>
     <%= booking.payment_status %>
   </p>
+
+    <!-- Actions for Renter -->
+  <% if current_user.renter? && booking.vehicle.user == current_user %>
+    <div class="d-flex gap-3">
+      <% if booking.pending? %>
+        <%= button_to "Accept", accept_vehicle_booking_path(booking.vehicle, booking), method: :patch, class: "btn btn-success" %>
+        <%= button_to "Reject", reject_vehicle_booking_path(booking.vehicle, booking), method: :patch, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+
+  <!-- Actions for Normal User -->
+  <% elsif current_user == booking.user %>
+    <% if booking.pending? || booking.accepted? %>
+      <%= button_to "Cancel Booking", cancel_vehicle_booking_path(booking.vehicle, booking), method: :patch, data: { confirm: "Are you sure you want to cancel?" }, class: "btn btn-warning" %>
+    <% end %>
+  <% end %>
 
 </div>

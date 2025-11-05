@@ -5,8 +5,8 @@
   <table class="table table-bordered">
     <tbody>
       <tr>
-        <th><%= f.label :user %></th>
-        <td><%= f.association :user, class: "form-control" %></td>
+        <%# <th><%= f.label :user %></th>
+        <%# <td><%= f.association :user, class: "form-control" %></td>
       </tr>
 
       <tr>
@@ -36,12 +36,12 @@
 
       <tr>
         <th><%= f.label :transmission %></th>
-        <td><%= f.input_field :transmission, class: "form-control" %></td>
+        <td><%= f.input_field :transmission, collection: ['manual', 'automatic'], class: "form-control" %></td>
       </tr>
 
       <tr>
         <th><%= f.label :fuel_type %></th>
-        <td><%= f.input_field :fuel_type, class: "form-control" %></td>
+        <td><%= f.input_field :fuel_type, collection: ['petrol', 'diesel', 'electric', 'hybrid'], class: "form-control" %></td>
       </tr>
 
       <tr>
@@ -54,15 +54,15 @@
         <td><%= f.input_field :address, class: "form-control" %></td>
       </tr>
 
-      <tr>
-        <th><%= f.label :latitude %></th>
-        <td><%= f.input_field :latitude, class: "form-control" %></td>
-      </tr>
+      <%# <tr> %>
+        <%# <th><%= f.label :latitude %></th>
+        <%# <td><%= f.input_field :latitude, class: "form-control" %></td>
+      <%# </tr> %>
 
-      <tr>
-        <th><%= f.label :longitude %></th>
-        <td><%= f.input_field :longitude, class: "form-control" %></td>
-      </tr>
+      <%# <tr> %>
+        <%# <th><%= f.label :longitude %></th>
+        <%# <td><%= f.input_field :longitude, class: "form-control" %></td>
+      <%# </tr> %>
 
       <tr>
         <th><%= f.label :active %></th>

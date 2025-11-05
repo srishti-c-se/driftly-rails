@@ -1,13 +1,23 @@
 <%= render @booking %>
 
 <div>
-  <%= link_to "Edit this booking", edit_vehicle_booking_path(@booking.vehicle, @booking) %> |
-  <%= link_to "Back to vehicle bookings", vehicle_bookings_path(@booking.vehicle) %>
-  <%= link_to "Destroy this booking", vehicle_booking_path(@booking.vehicle, @booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+  <%# <%= link_to "Edit this booking", edit_vehicle_booking_path(@booking.vehicle, @booking) %>
+  <% if current_user.renter? %>
+    <%= link_to "All Bookings", vehicle_bookings_path(@booking.vehicle), class: 'btn btn-primary' %>
+    <% if @booking.status.in?(['cancelled', 'rejected']) %>
+      <%= link_to "Delete booking", vehicle_booking_path(@booking.vehicle, @booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    <% end %>
+  <% elsif @booking.status.in?(['cancelled', 'rejected']) %>
+    <div class="mt-4">
+      <%= link_to "All Bookings", vehicle_bookings_path(@booking.vehicle), class: 'btn btn-primary' %>
+      <%= link_to "Add Review", new_vehicle_booking_review_path(@booking.vehicle, @booking), class: "btn btn-primary" %>
+      <%= link_to "Delete booking", vehicle_booking_path(@booking.vehicle, @booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    </div>
+  <% else %>
+    <div class="mt-4">
+      <%= link_to "All Bookings", vehicle_bookings_path(@booking.vehicle), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
 </div>
 
 <!-- Button to create a new review -->
-<div class="mt-4">
-  <%= link_to "Add Review", new_vehicle_booking_review_path(@booking.vehicle, @booking), class: "btn btn-primary" %>
-
-</div>

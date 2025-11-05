@@ -12,7 +12,7 @@ class User < ApplicationRecord
   # ASSOCIATIONS
   has_many :vehicles, dependent: :destroy
   has_many :bookings, dependent: :destroy
-  has_many :messages, dependent: :nullify
+  # has_many :messages, dependent: :nullify
 
   # GEOCODING
   geocoded_by :address

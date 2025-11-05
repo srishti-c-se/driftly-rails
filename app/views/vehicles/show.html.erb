@@ -1,9 +1,71 @@
-<%= render @vehicle %>
+<%# <%= render @vehicle %>
 
-<div>
-  <%= link_to "Back to vehicles", vehicles_path, class: "btn btn-secondary" %>
+<%# <div> %>
+  <%# <%= link_to "Back to vehicles", vehicles_path, class: "btn btn-secondary" %>
 
-  <%= link_to "Book this vehicle", new_vehicle_booking_path(@vehicle), class: "btn btn-info" %>
+  <%# <%= link_to "Book this vehicle", new_vehicle_booking_path(@vehicle), class: "btn btn-info" %>
 
-  <%= link_to "Destroy this vehicle", vehicle_path(@vehicle), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+  <%# <%= link_to "Destroy this vehicle", vehicle_path(@vehicle), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+<%# </div> %>
+
+<div style="margin: 20px; display: flex; flex-direction: column; gap: 5px;">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Seats</th>
+        <th>Transmission</th>
+        <th>Fuel type</th>
+        <th>Address</th>
+        <%# <th>Latitude</th> %>
+        <%# <th>Longitude</th> %>
+        <%# <th>Active</th> %>
+        <th>Description</th>
+        <th>Price per day</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @vehicle.title %></td>
+        <td><%= @vehicle.brand %></td>
+        <td><%= @vehicle.model %></td>
+        <td><%= @vehicle.year %></td>
+        <td><%= @vehicle.seats %></td>
+        <td><%= @vehicle.transmission %></td>
+        <td><%= @vehicle.fuel_type %></td>
+        <td><%= @vehicle.address %></td>
+        <%# <td><%= vehicle.latitude %></td>
+        <%# <td><%= vehicle.longitude %></td>
+        <%# <td><%= vehicle.active ? "Yes" : "No" %></td>
+        <td><%= @vehicle.description %></td>
+        <td><%= number_to_currency(@vehicle.price_per_day, unit: "Rs ") %></td>
+        <td>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top: 20px;">
+    <%# display edit button for owner only %>
+    <% if current_user.renter? %>
+      <%= link_to "Home", vehicles_path, class: "btn btn-primary btn-sm" %>
+      <%= link_to "Edit", edit_vehicle_path, class: "btn btn-info btn-sm"  %>
+      <%= link_to "Remove vehicle", vehicle_path(@vehicle), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+      <%= link_to "Bookings", vehicle_bookings_path(@vehicle), class: "btn btn-success btn-sm" %>
+    <% else %>
+      <%= link_to "Home", vehicles_path, class: "btn btn-primary btn-sm" %>
+      <%# <%= render "form", booking: @booking %>
+      <%= link_to "Book this vehicle", new_vehicle_booking_path(@vehicle), class: "btn btn-info btn-sm" %>
+    <% end %>
+  </div>
+
+  <%# Reviews %>
+  <%# <%= render @vehicle %>
+
+  <%= render partial: "reviews", locals: { vehicle: @vehicle, current_user: current_user } %>
+
 </div>
