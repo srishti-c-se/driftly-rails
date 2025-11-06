@@ -1,9 +1,11 @@
-<h1>New vehicle</h1>
+<h1 class="text-center text-light my-4">Add a New Vehicle</h1>
 
-<%= render "form", vehicle: @vehicle %>
+<div class="container py-4"
+  <div class="mx-auto" style="max-width: 700px; background-color: #111; padding: 2rem; border-radius: 12px; box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);">
+    <%= render "form", vehicle: @vehicle %>
 
-<br>
-
-<div>
-  <%= link_to "Home", vehicles_path, class: "btn btn-primary" %>
+    <div class="text-center mt-4">
+      <%= link_to "← Back to My Vehicles", vehicles_path, class: "btn btn-outline-light" %>
+    </div>
+  </div>
 </div>
