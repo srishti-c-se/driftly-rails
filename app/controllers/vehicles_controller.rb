@@ -8,6 +8,8 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/1 or /vehicles/1.json
   def show
+    @vehicle = Vehicle.find(params[:id])
+    @reviews = @vehicle.reviews.includes(:user)
   end
 
   # GET /vehicles/new

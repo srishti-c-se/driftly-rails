@@ -1,14 +1,10 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-# db/seeds.rb
 require 'faker'
+
+puts 'Cleaning database...'
+Review.destroy_all
+Booking.destroy_all
+Vehicle.destroy_all
+User.destroy_all
 
 puts '🌱 Seeding users...'
 users = []
@@ -19,15 +15,16 @@ users = []
     last_name:  Faker::Name.last_name,
     email:      Faker::Internet.unique.email,
     phone:      Faker::Number.number(digits: 8),
-    address:    Faker::Address.full_address,     
+    address:    Faker::Address.full_address,
     password:   "password"
   )
 end
 
 puts '🌱 Seeding vehicles...'
+vehicles = []
 
 20.times do
-  vehicle = Vehicle.create!(
+  vehicles << Vehicle.create!(
     title: Faker::Vehicle.make_and_model,
     description: Faker::Lorem.paragraph(sentence_count: 2),
     price_per_day: rand(1000..3000),
@@ -40,4 +37,33 @@ puts '🌱 Seeding vehicles...'
   )
 end
 
-puts '✅ Done seeding!'
+puts '🌱 Seeding bookings...'
+bookings = []
+
+vehicles.each do |vehicle|
+  # Each vehicle gets 1-3 bookings
+  rand(1..3).times do
+    bookings << Booking.create!(
+      user: users.sample,
+      vehicle: vehicle,
+      start_date: Faker::Date.backward(days: 30),
+      end_date: Faker::Date.forward(days: 30)
+    )
+  end
+end
+
+puts '🌱 Seeding reviews...'
+bookings.each do |booking|
+  # Each booking has a 50% chance to have a review
+  if [true, false].sample
+    Review.create!(
+      user: booking.user,
+      booking: booking,
+      vehicle: booking.vehicle,  # ✅ important to avoid "Vehicle must exist" error
+      rating: rand(1..5),
+      comment: Faker::Lorem.paragraph(sentence_count: 2)
+    )
+  end
+end
+
+puts '✅ Done seeding everything!'
