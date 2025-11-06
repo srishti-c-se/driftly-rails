@@ -1,63 +1,110 @@
 body {
   background-color: black;
-  color: white; /* optional: makes text readable */
+  color: white;
+  font-family: "Poppins", sans-serif;
 }
 
-.card.mb-3 {
+.vehicle-show-container {
   display: flex;
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  min-height: auto;
+}
+
+.vehicle-card {
+  display: flex;
   background-color: #111;
-  border-radius: 12px;
+  border: 1px solid white;
+  border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  color: #fff;
-  margin: 20px auto;
-  border: 1px solid white;
-
-  max-width: 1500px;
+  color: white;
+  max-width: 1100px;
   min-height: 400px;
+  margin-bottom: 12px;
 }
 
-.card.mb-3 image {
-  flex: 1 1 45%;
-  min-width: 300px;
-  overflow: hidden;
+.vehicle-card-image {
+  flex: 1 1 50%;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .vehicle-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  padding: 20px;
+  border-radius: 12px;
 }
 
 .vehicle-card-info {
-  flex: 1 1 55%;
-  padding: 32px;
+  flex: 1 1 50%;
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
 }
 
-.card.mb-3 title {
+.vehicle-card-info h2 {
   font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 12px;
-  padding-left: 15px;
+  margin-bottom: 20px;
 }
 
-.card.mb-3 p {
-  font-size: 1rem;
-  opacity: 0.8;
+.vehicle-card-info p {
   margin-bottom: 12px;
-  padding-left: 10px;
+  opacity: 0.9;
 }
 
-.card.mb-3 .card-product-infos {
-  flex: 1 1 60%;
-  padding-left: 10px;
+.vehicle-card-buttons {
+  margin-top: 20px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card-link {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.card-link:hover {
+  transform: translateY(-3px);
+}
+
+
+.reviews-section {
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  padding: 40px 20px;
+}
+
+.reviews-section .card {
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 8px 18px rgba(128, 128, 128, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+.reviews-section .card-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #f0f0f0;
+  margin-bottom: 10px;
+}
+
+.reviews-section .card-text {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.reviews-section .col-md-6 {
+  margin-bottom: 30px;
 }
