@@ -1,10 +1,10 @@
 <!-- Reviews Section -->
 <div class="mt-5">
 
-   <!-- Add Review Button -->
-   <% if vehicle.bookings.exists?(user: current_user) %>
-    <%= link_to "Add Review", new_vehicle_booking_review_path(vehicle, vehicle.bookings.find_by(user: current_user)), class: "btn btn-primary" %>
-   <% end %>
+  <!-- Add Review Button -->
+  <% if vehicle.bookings.exists?(user: current_user) %>
+  <%= link_to "Add Review", new_vehicle_booking_review_path(vehicle, vehicle.bookings.find_by(user: current_user)), class: "btn btn-primary" %>
+  <% end %>
 
   <h3>Reviews</h3>
 

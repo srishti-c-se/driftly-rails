@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'home/index'
   get 'messages/create'
   devise_for :users
+  root to: "pages#home"
 
   resources :bookings, only: [:index]
   resources :reviews, only: [:index]
@@ -17,8 +17,6 @@ Rails.application.routes.draw do
       resources :reviews
     end
   end
-
-  root "pages#home"
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
