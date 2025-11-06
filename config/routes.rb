@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'messages/create'
   devise_for :users
-  # root to: "vehicles#index"
   root to: "pages#home"
 
   resources :bookings, only: [:index]

@@ -1,0 +1,45 @@
+<div class="vehicle-show-container">
+  <div class="vehicle-card">
+    <div class="vehicle-card-image">
+      <%= image_tag "car1.jpg", alt: "car" %>
+    </div>
+
+    <div class="vehicle-card-info">
+      <h2><%= @vehicle.title %></h2>
+      <p><%= @vehicle.description.truncate(100) %></p>
+      <p>Seats: <%= @vehicle.seats %> | Transmission: <%= @vehicle.transmission %> | Fuel: <%= @vehicle.fuel_type %></p>
+      <p><strong>Price per day:</strong> Rs <%= @vehicle.price_per_day %></p>
+      <p><i class="bi bi-geo-alt"></i> <%= @vehicle.address %></p>
+
+      <div class="vehicle-card-buttons">
+        <% if current_user.renter? %>
+          <%= link_to "Edit", edit_vehicle_path, class: "btn btn-outline-light"  %>
+          <%= link_to "Remove", vehicle_path(@vehicle), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+          <%= link_to "Bookings", vehicle_bookings_path(@vehicle), class: "btn btn-outline-light" %>
+        <% else %>
+          <%= link_to "Book this vehicle", new_vehicle_booking_path(@vehicle), class: "btn btn-outline-light" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 class="text-center my-4">Read Testimonials, Ride with confidence</h2>
+
+<div class="reviews-section">
+  <div class="row">
+    <% @reviews.each do |review| %>
+      <div class="col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= review.user.first_name %> <%= review.user.last_name %>
+            </h5>
+            <p class="card-text"><%= review.comment %></p>
+            <p>Rating: <%= "⭐" * review.rating %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
