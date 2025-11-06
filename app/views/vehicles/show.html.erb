@@ -50,6 +50,18 @@
       </tr>
     </tbody>
   </table>
+  <p style="margin-top: 20px; font-size: 16px; line-height: 1.6;">
+  The <strong><%= @vehicle.title %></strong> is a
+  <strong><%= @vehicle.year %></strong>
+  <strong><%= @vehicle.brand %> <%= @vehicle.model %></strong> offering
+  <%= @vehicle.seats %> seats. It features a
+  <%= @vehicle.transmission %> transmission and runs on
+  <%= @vehicle.fuel_type %>. The vehicle is located at
+  <%= @vehicle.address %> and is available for rent at
+  <%= number_to_currency(@vehicle.price_per_day, unit: "Rs ") %> per day.
+  <%= @vehicle.description.present? ? @vehicle.description : "No additional description is available." %>
+</p>
+
 
   <div style="margin-top: 20px;">
     <%# display edit button for owner only %>
@@ -67,8 +79,7 @@
 
   </div>
 
-  <%# Reviews %>
-  <%# <%= render @vehicle %>
+
 
   <%= render partial: "reviews", locals: { vehicle: @vehicle, current_user: current_user } %>
 
