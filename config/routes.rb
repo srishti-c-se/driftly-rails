@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # get 'home/index'
   get 'messages/create'
   devise_for :users
   # root to: "vehicles#index"
@@ -19,7 +18,6 @@ Rails.application.routes.draw do
       resources :reviews
     end
   end
-
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
