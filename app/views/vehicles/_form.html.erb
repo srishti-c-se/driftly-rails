@@ -1,4 +1,4 @@
-<%= simple_form_for(@vehicle) do |f| %>
+<%= simple_form_for(vehicle) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="mb-3">
@@ -46,6 +46,6 @@
   </div>
 
   <div class="text-center mt-4">
-    <%= f.button :submit, "Add Vehicle", class: "btn btn-danger px-4" %>
+    <%= f.button :submit, vehicle.persisted? ? "Update Vehicle" : "Add Vehicle", class: "btn btn-light px-4 py-2" %>
   </div>
 <% end %>
