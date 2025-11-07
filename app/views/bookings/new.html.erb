@@ -1,9 +1,12 @@
-<h1>New booking</h1>
-
-<%= render "form", booking: @booking %>
-
-<br>
-
-<div>
-  <%= link_to "Back to bookings", bookings_path %>
+<div class="booking-page">
+  <div class="overlay"></div>
+  <div class="booking-container d-flex justify-content-center align-items-center">
+    <div class="booking-card shadow-lg p-5 w-100">
+      <h2 class="text-center mb-4 text-light">New Booking</h2>
+      <%= render 'form', booking: @booking %>
+      <div class="text-center mt-4">
+        <%= link_to "Back to Bookings", bookings_path, class: "btn btn-outline-light px-4 py-2" %>
+      </div>
+    </div>
+  </div>
 </div>
