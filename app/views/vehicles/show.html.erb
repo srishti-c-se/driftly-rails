@@ -46,27 +46,29 @@
 
 <h3 class="text-center my-4">Leave a Review</h3>
 <p class="text-center my-4">Share your experience with this vehicle! Rate it from 1 to 5 stars and leave your comment so others can ride with confidence.</p>
-<div class="leave-review row">
-  <div class="col-md-8 mx-auto">
-    <% if user_signed_in? && current_user.bookings.exists?(vehicle: @vehicle) %>
-      <%= form_with(model: [@vehicle, @review]) do |f| %>
-        <div class="mb-2">
-          <%= f.select :rating, options_for_select(1..5), { prompt: "Select rating" }, class: "form-control", required: true %>
-        </div>
+<div class="leave-review-form">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <% if user_signed_in? && current_user.bookings.exists?(vehicle: @vehicle) %>
+        <%= form_with(model: [@vehicle, @review]) do |f| %>
+          <div class="mb-2">
+            <%= f.select :rating, options_for_select(1..5), { prompt: "Select rating" }, class: "form-control", required: true %>
+          </div>
 
-        <div class="mb-2">
-          <%= f.label :comment, "Comment" %><br>
-          <%= f.text_area :comment, rows: 3, class: "form-control" %>
-        </div>
+          <div class="mb-2">
+            <%= f.label :comment, "Comment" %><br>
+            <%= f.text_area :comment, rows: 3, class: "form-control" %>
+          </div>
 
-        <div class="text-center mt-3">
-          <%= f.submit "Submit Review", class: "btn btn-outline-light" %>
-        </div>
-       <% end %>
-          <% elsif user_signed_in? %>
-            <p><em>You can only review this vehicle after completing a booking.</em></p>
-          <% else %>
-            <p><em>Please sign in to leave a review.</em></p>
-          <% end %>
+          <div class="text-center mt-3">
+            <%= f.submit "Submit Review", class: "btn btn-outline-light" %>
+          </div>
+        <% end %>
+            <% elsif user_signed_in? %>
+              <p><em>You can only review this vehicle after completing a booking.</em></p>
+            <% else %>
+              <p><em>Please sign in to leave a review.</em></p>
+            <% end %>
+    </div>
   </div>
 </div>

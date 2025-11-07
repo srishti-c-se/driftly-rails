@@ -122,3 +122,16 @@ body {
   color: white;
   border: 1px solid #333;
 }
+
+.leave-review-form {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('car3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  color: white;
+}
