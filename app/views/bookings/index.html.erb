@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <h1 class="Title">Book with Confidence, Ride with Peace</h1>
   <div class="row">
-    <h2 class="m-6">My Bookings</h2>
+    <h2 class="m-6"><%= current_user.renter? ? 'Current Bookings' : 'My Bookings' %></h2>
     <% if @bookings.any?%>
       <% @bookings.each do |booking| %>
       <div class="col-md-6 mb-4">
