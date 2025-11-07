@@ -10,6 +10,7 @@ class VehiclesController < ApplicationController
   def show
     @vehicle = Vehicle.find(params[:id])
     @reviews = @vehicle.reviews
+    @review = Review.new
   end
 
   # GET /vehicles/new
