@@ -22,11 +22,11 @@
   </div>
 
   <div class="mb-3">
-    <%= f.input :transmission, collection: ['Manual', 'Automatic'], input_html: { class: "form-select bg-dark text-white border-secondary" }, label_html: { class: "text-white" } %>
+    <%= f.input :transmission, collection: ['manual', 'automatic'], input_html: { class: "form-select bg-dark text-white border-secondary" }, label_html: { class: "text-white" } %>
   </div>
 
   <div class="mb-3">
-    <%= f.input :fuel_type, collection: ['Petrol', 'Diesel', 'Electric', 'Hybrid'], input_html: { class: "form-select bg-dark text-white border-secondary" }, label_html: { class: "text-white" } %>
+    <%= f.input :fuel_type, collection: ['petrol', 'diesel', 'electric', 'hybrid'], input_html: { class: "form-select bg-dark text-white border-secondary" }, label_html: { class: "text-white" } %>
   </div>
 
   <div class="mb-3">
@@ -46,6 +46,6 @@
   </div>
 
   <div class="text-center mt-4">
-    <%= f.button :submit, vehicle.persisted? ? "Update Vehicle" : "Add Vehicle", class: "btn btn-light px-4 py-2" %>
+    <%= f.button :submit, vehicle.persisted? ? "Update Vehicle" : "Add Vehicle", class: "btn btn-outline-light px-4 py-2" %>
   </div>
 <% end %>
