@@ -41,7 +41,6 @@ puts '🌱 Seeding bookings...'
 bookings = []
 
 vehicles.each do |vehicle|
-  # Each vehicle gets 1-3 bookings
   rand(1..3).times do
     bookings << Booking.create!(
       user: users.sample,
@@ -54,12 +53,11 @@ end
 
 puts '🌱 Seeding reviews...'
 bookings.each do |booking|
-  # Each booking has a 50% chance to have a review
   if [true, false].sample
     Review.create!(
       user: booking.user,
       booking: booking,
-      vehicle: booking.vehicle,  # ✅ important to avoid "Vehicle must exist" error
+      vehicle: booking.vehicle,
       rating: rand(1..5),
       comment: Faker::Lorem.paragraph(sentence_count: 2)
     )
