@@ -1,20 +1,24 @@
-<h2>Log in</h2>
+<div class="signup-page">
+  <div class="overlay"></div>
+  <div class="signup-box">
+    <h2>Log in</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email, required: false, autofocus: true, input_html: { class: "input-dark", autocomplete: "email" } %>
+        <%= f.input :password, required: false, input_html: { class: "input-dark", autocomplete: "current-password" } %>
+        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, "Log in", class: "btn btn-outline-light px-4 py-2" %>
+      </div>
+    <% end %>
+
+   <div class="form-actions">
+    <%= link_to "Forgot your password?", new_password_path(resource_name), class: "btn btn-outline-light px-4 py-2 me-2" %>
+    <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-outline-light px-4 py-2" %>
+   </div>
+
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
