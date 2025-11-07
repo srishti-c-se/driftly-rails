@@ -1,23 +1,81 @@
-<%= render @booking %>
+<div class="container-fluid">
+  <div class="booking-show-container">
+    <%# <%= link_to "Edit this booking", edit_vehicle_booking_path(@booking.vehicle, @booking) %>
+    <div class="booking-card">
+      <div class="vehicle-card-image">
+        <%= image_tag "car1.jpg", alt: "car" %>
+      </div>
+      <div class="vehicle-card-info">
+        <div class="card-text">
+          <h2 class="vehicle-title"><%= link_to @booking.vehicle.title, vehicle_path(@booking.vehicle) %></h2>
+          <p><strong>Client: </strong><%=@booking.user.first_name %> <%= @booking.user.last_name %> (<%= @booking.user.email %>)</p>
+          <p>
+            <strong>Start date: </strong>
+            <%= @booking.start_date %>
+            <%= @booking.start_date.strftime("%d %b %Y") %><br>
+          </p>
+          <p>
+            <strong>End date: </strong>
+            <%= @booking.end_date %>
+            <%= @booking.end_date.strftime("%d %b %Y") %>
+          </p>
+          <p><i class="bi bi-geo-alt"></i>
+            <strong>Pickup address: </strong>
+            <%= @booking.pickup_address %>
+          </p>
+          <p><i class="bi bi-geo-alt"></i>
+            <strong>Dropoff address:</strong>
+            <%= @booking.dropoff_address %>
+          </p>
 
-<div>
-  <%# <%= link_to "Edit this booking", edit_vehicle_booking_path(@booking.vehicle, @booking) %>
-  <% if current_user.renter? %>
-    <%= link_to "All Bookings", vehicle_bookings_path(@booking.vehicle), class: 'btn btn-primary' %>
-    <% if @booking.status.in?(['cancelled', 'rejected']) %>
-      <%= link_to "Delete booking", vehicle_booking_path(@booking.vehicle, @booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
-    <% end %>
-  <% elsif @booking.status.in?(['cancelled', 'rejected']) %>
-    <div class="mt-4">
-      <%= link_to "All Bookings", vehicle_bookings_path(@booking.vehicle), class: 'btn btn-primary' %>
-      <%= link_to "Add Review", new_vehicle_booking_review_path(@booking.vehicle, @booking), class: "btn btn-primary" %>
-      <%= link_to "Delete booking", vehicle_booking_path(@booking.vehicle, @booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+          <p>
+            <strong>Total price:</strong>
+            <%= number_to_currency(@booking.total_price, unit: "RS ") %>
+          </p>
+
+          <p>
+            <strong>Status:</strong>
+            <%= @booking.status  %>
+          </p>
+
+          <%# <p>
+            <strong>Payment status:</strong>
+            <%= @booking.payment_status %>
+          </p> 
+        </div>
+        <%# <%= render @booking %>
+        <div class="vehicle-card-buttons">
+          <%# buttons for renter depending on different conditions %>
+          <% if current_user.renter? && @booking.vehicle.user == current_user %>
+            <%# delete button when status is cancelled or rejected %>
+            <% if @booking.status.in?(['cancelled', 'rejected']) %>
+              <%= link_to "Delete booking", vehicle_booking_path(@booking.vehicle, @booking),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+            <% elsif @booking.pending? %>
+              <%# Accept or reject button for renter when booking status id pending %>
+              <div class="d-flex gap-3">
+                <%= button_to "Accept", accept_vehicle_booking_path(@booking.vehicle, @booking), method: :patch, class: "btn btn-outline-light" %>
+                <%= button_to "Reject", reject_vehicle_booking_path(@booking.vehicle, @booking), method: :patch, class: "btn btn-outline-danger" %>
+              </div>
+            <% end %>
+              <%# buttons for user depending on different conditions %>
+          <% elsif current_user == @booking.user %>
+            <%# cancel booking option when status is either accepted or rejected %>
+            <% if @booking.pending? || @booking.accepted? %>
+              <%= button_to "Cancel Booking", cancel_vehicle_booking_path(booking.vehicle, booking),
+                method: :patch, data: { confirm: "Are you sure you want to cancel?" }, class: "btn btn-outline-warning" %>
+            <% elsif @booking.completed? %>
+              <%# add review and delete booking buttons when status is completed %>
+              <%= link_to "Add Review", new_vehicle_booking_review_path(@booking.vehicle, @booking), class: "btn btn-outline-light" %>
+              <%= link_to "Delete booking", vehicle_booking_path(@booking.vehicle, @booking),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+            <% elsif @booking.rejected? || @booking.cancelled? %>
+              <%= link_to "Delete booking", vehicle_booking_path(@booking.vehicle, @booking),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-outline-danger" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% else %>
-    <div class="mt-4">
-      <%= link_to "All Bookings", vehicle_bookings_path(@booking.vehicle), class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+  </div>
 </div>
-
-<!-- Button to create a new review -->
