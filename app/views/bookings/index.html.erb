@@ -1,18 +1,31 @@
-<h1>My Bookings</h1>
-
-<div id="bookings">
-  <% if @bookings.any?%>
-    <% @bookings.each do |booking| %>
-      <%= render booking %>
-      <p>
-        <%= link_to "More details", vehicle_booking_path(booking.vehicle, booking), class: 'btn btn-primary mt-3' %>
-      </p>
+<div class="container-fluid">
+  <h1 class="Title">Book with Confidence, Ride with Peace</h1>
+  <div class="row">
+    <h2 class="m-6"><%= current_user.renter? ? 'Current Bookings' : 'My Bookings' %></h2>
+    <% if @bookings.any?%>
+      <% @bookings.each do |booking| %>
+      <div class="col-md-6 mb-4">
+        <%# <div class="card h-100 bg-dark"> %>
+          <div class="vehicle-image">
+            <%= image_tag "car2.jpg", class: "card-img-top", alt: booking.vehicle.title %>
+            <%= link_to "", vehicle_booking_path(booking.vehicle, booking) %>
+          </div>
+          <div class="card-body ms-2">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="vehicle-title"><%= link_to booking.vehicle.title, vehicle_path(booking.vehicle), class: 'text-decoration-none' %></h5>
+              <%= link_to "More details", vehicle_booking_path(booking.vehicle, booking), class: 'btn btn-outline-light px-4 py-2' %>
+            </div>
+            <span class="label">Duration: <%= (booking.end_date - booking.start_date).to_i %> days</span>
+            <p>
+              <strong>Total Price: </strong>
+              <%= number_to_currency(booking.total_price, unit: "RS ") %>
+            </p>
+          </div>
+        </div>
+      <%# </div> %>
+      <% end %>
+    <% else %>
+      <p>No bookings found.</p>
     <% end %>
-  <% else %>
-    <p>No bookings found.</p>
-  <% end %>
+  </div>
 </div>
-
-<% if current_user.user? %>
-  <%= link_to "New booking", new_vehicle_booking_path(@vehicle), class: 'btn btn-success' if @vehicle.present? %>
-<% end %>
