@@ -108,3 +108,30 @@ body {
 .reviews-section .col-md-6 {
   margin-bottom: 30px;
 }
+
+.leave-review {
+  background-color: #111;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(128,128,128,0.3);
+  margin-bottom: 30px;
+}
+
+.leave-review .form-control {
+  background-color: #111;
+  color: white;
+  border: 1px solid #333;
+}
+
+.leave-review-form {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('car3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  color: white;
+}
