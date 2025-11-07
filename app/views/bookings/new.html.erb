@@ -1,31 +1,11 @@
-<div class="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
-  <div class="booking-container shadow-lg overflow-hidden position-relative"
-       style="border-radius: 25px; width: 900px; max-width: 95%; min-height: 90vh;">
-
-    <!-- Background image -->
-    <div style="background-image: url(<%= asset_path('background_image.jpg') %>);
-                background-size: cover;
-                background-position: center;
-                position: absolute;
-                top: 0; left: 0; right: 0; bottom: 0;">
-    </div>
-
-    <!-- Dark overlay on top of background -->
-    <div style="background-color: rgba(0, 0, 0, 0.75);
-                position: absolute;
-                top: 0; left: 0; right: 0; bottom: 0;">
-    </div>
-
-    <!-- Content (form) -->
-    <div class="position-relative text-light p-5 d-flex flex-column justify-content-center align-items-center h-100" style="z-index: 2;">
-      <h3 class="text-center mb-4 fw-bold">New Booking</h3>
-
-      <div class="w-100" style="max-width: 450px;">
-        <%= render 'form', booking: @booking %>
-      </div>
-
+<div class="booking-page">
+  <div class="overlay"></div>
+  <div class="booking-container d-flex justify-content-center align-items-center">
+    <div class="booking-card shadow-lg p-5 w-100">
+      <h2 class="text-center mb-4 text-light">New Booking</h2>
+      <%= render 'form', booking: @booking %>
       <div class="text-center mt-4">
-        <%= link_to "Back to Bookings", bookings_path, class: "btn btn-outline-light w-" %>
+        <%= link_to "Back to Bookings", bookings_path, class: "btn btn-outline-light px-4 py-2" %>
       </div>
     </div>
   </div>
