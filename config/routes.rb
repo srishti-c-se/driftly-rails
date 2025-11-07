@@ -14,8 +14,8 @@ Rails.application.routes.draw do
         patch :reject   # renter rejects a booking
         patch :cancel   # user cancels a booking
       end
-      resources :reviews
     end
+    resources :reviews, only: [:create, :index]
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

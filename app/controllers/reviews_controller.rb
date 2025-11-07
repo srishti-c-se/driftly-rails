@@ -1,6 +1,5 @@
 class ReviewsController < ApplicationController
   before_action :set_vehicle
-  before_action :set_booking
   before_action :set_review, only: %i[show edit update destroy]
 
   def index
