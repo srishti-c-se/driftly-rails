@@ -50,10 +50,10 @@
   <div class="row">
     <div class="col-md-8 mx-auto">
       <% if user_signed_in? && current_user.bookings.exists?(vehicle: @vehicle) %>
-          <%= form_with model: [@vehicle, @review] do |f| %>
-            <div class="mb-2">
-              <%= f.select :rating, options_for_select(1..5), { prompt: "Select rating" }, class: "form-control", required: true %>
-            </div>
+        <%= form_with(model: [@vehicle, @booking, @review]) do |f| %>
+          <div class="mb-2">
+            <%= f.select :rating, options_for_select(1..5), { prompt: "Select rating" }, class: "form-control", required: true %>
+          </div>
 
             <div class="mb-2">
               <%= f.label :comment, "Comment" %><br>
