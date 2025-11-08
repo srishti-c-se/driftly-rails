@@ -10,6 +10,7 @@ class VehiclesController < ApplicationController
   def show
     @vehicle = Vehicle.find(params[:id])
     @reviews = @vehicle.reviews
+    @booking = @vehicle.bookings.find_by(user: current_user)
     @review = Review.new
   end
 
