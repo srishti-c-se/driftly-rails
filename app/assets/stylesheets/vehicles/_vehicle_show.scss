@@ -1,0 +1,128 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.vehicle-show-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  min-height: auto;
+}
+
+.vehicle-card {
+  display: flex;
+  background-color: #111;
+  border: 1px solid white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  color: white;
+  max-width: 1100px;
+  min-height: 400px;
+  margin-bottom: 12px;
+}
+
+.vehicle-card-image {
+  flex: 1 1 50%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vehicle-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.vehicle-card-info {
+  flex: 1 1 50%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vehicle-card-info h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.vehicle-card-info p {
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+.vehicle-card-buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+.reviews-section {
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  padding: 40px 20px;
+}
+
+.reviews-section .card {
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 8px 18px rgba(128, 128, 128, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+.reviews-section .card-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #f0f0f0;
+  margin-bottom: 10px;
+}
+
+.reviews-section .card-text {
+  font-size: 0.95rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.reviews-section .col-md-6 {
+  margin-bottom: 30px;
+}
+
+.leave-review {
+  background-color: #111;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(128,128,128,0.3);
+  margin-bottom: 30px;
+}
+
+.leave-review .form-control {
+  background-color: #111;
+  color: white;
+  border: 1px solid #333;
+}
+
+.leave-review-form {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('car3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  color: white;
+}
