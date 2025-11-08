@@ -14,4 +14,9 @@
 @import "bookings/index";
 @import "vehicles/index";
 @import "pages/new_booking";
+@import "pages/booking_show";
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
 @import "pages/login";

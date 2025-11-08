@@ -26,7 +26,11 @@ class BookingsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @booking = Booking.find(params[:id])
+    @message = Message.new
+    @messages = @booking.messages
+  end
 
   def new
     @booking = @vehicle.bookings.build
