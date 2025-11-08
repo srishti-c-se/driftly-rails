@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :vehicles do
     resources :bookings do
+      resources :reviews, only: [:create, :index]
+      resources :messages
       # custom member routes for status changes
       member do
         patch :accept   # renter accepts a booking
@@ -15,7 +17,6 @@ Rails.application.routes.draw do
         patch :cancel   # user cancels a booking
       end
     end
-    resources :reviews, only: [:create, :index]
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

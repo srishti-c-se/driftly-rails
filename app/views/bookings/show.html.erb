@@ -79,3 +79,37 @@
     </div>
   </div>
 </div>
+
+<div class="container chat">
+  <h1>Thank you for your booking for <%= @booking.vehicle.title %></h1>
+  <p>Feel free to chat with the owner below</p>
+
+  <%= turbo_stream_from "thread_Booking_#{@booking.id}_messages" %>
+
+  <div id="messages" class="messages">
+    <% @booking.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+
+  <div class="message-form mt-3">
+    <%= simple_form_for [@booking.vehicle, @booking, @message],
+      html: {
+        class: "d-flex gap-2",
+        data: {
+          controller: "reset-form",
+          action: "turbo:submit-end->reset-form#reset"
+        }
+      } do |f| %>
+
+      <% other_user = current_user == @booking.vehicle.user ? @booking.user : @booking.vehicle.user %>
+
+      <%= f.input :body,
+        label: false,
+        placeholder: "Message #{other_user.first_name}",
+        wrapper_html: { class: "flex-grow-1" } %>
+
+      <%= f.submit "Send", class: "btn-light mb-3" %>
+    <% end %>
+  </div>
+</div>
