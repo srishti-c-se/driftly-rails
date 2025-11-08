@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="booking-show-container">
     <%# <%= link_to "Edit this booking", edit_vehicle_booking_path(@booking.vehicle, @booking) %>
-    <div class="booking-card">
+    <div class="book-card">
       <div class="vehicle-card-image">
         <%= image_tag "car1.jpg", alt: "car" %>
       </div>
@@ -41,7 +41,7 @@
           <%# <p>
             <strong>Payment status:</strong>
             <%= @booking.payment_status %>
-          </p> 
+          </p>
         </div>
         <%# <%= render @booking %>
         <div class="vehicle-card-buttons">
@@ -62,7 +62,7 @@
           <% elsif current_user == @booking.user %>
             <%# cancel booking option when status is either accepted or rejected %>
             <% if @booking.pending? || @booking.accepted? %>
-              <%= button_to "Cancel Booking", cancel_vehicle_booking_path(booking.vehicle, booking),
+              <%= button_to "Cancel Booking", cancel_vehicle_booking_path(@booking.vehicle, @booking),
                 method: :patch, data: { confirm: "Are you sure you want to cancel?" }, class: "btn btn-outline-warning" %>
             <% elsif @booking.completed? %>
               <%# add review and delete booking buttons when status is completed %>

@@ -12,7 +12,7 @@ body {
   min-height: auto;
 }
 
-.booking-card {
+.book-card {
   display: flex;
   background-color: #111;
   border: 1px solid white;
@@ -67,11 +67,11 @@ body {
   gap: 10px;
 }
 
-.card-link {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
+// .card-link {
+//   cursor: pointer;
+//   transition: transform 0.2s ease;
+// }
 
-.card-link:hover {
-  transform: translateY(-3px);
-}
+// .card-link:hover {
+//   transform: translateY(-3px);
+// }
