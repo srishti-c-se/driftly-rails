@@ -53,7 +53,6 @@ body {
 .card-text h2 {
   font-size: 2rem;
   margin-bottom: 10px;
-  text-decoration: none
 }
 
 .card-text p {
@@ -68,28 +67,11 @@ body {
   gap: 10px;
 }
 
-.card-link {
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
+// .card-link {
+//   cursor: pointer;
+//   transition: transform 0.2s ease;
+// }
 
-.card-link:hover {
-  transform: translateY(-3px);
-}
-
-.container.chat {
-  background-color: #000;          /* black background */
-  border: 2px solid #fff;          /* white solid border */
-  border-radius: 12px;             /* rounded corners */
-  padding: 20px;
-  margin: 30px auto;
-  max-width: 800px;
-  color: #fff;                     /* text color white */
-  box-shadow: 0 8px 24px rgba(255,255,255,0.1); /* subtle glow */
-}
-
-.message-form .btn {
-  background-color: grey;
-  color: #000;
-  border: 1px solid #fff;
-}
+// .card-link:hover {
+//   transform: translateY(-3px);
+// }

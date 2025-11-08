@@ -57,10 +57,7 @@
     </div>
 
   <!-- Actions for Normal User -->
-  <% elsif current_user == booking.user %>
-    <% if booking.pending? || booking.accepted? %>
-      <%= button_to "Cancel Booking", cancel_vehicle_booking_path(booking.vehicle, booking), method: :patch, data: { confirm: "Are you sure you want to cancel?" }, class: "btn btn-warning" %>
-    <% end %>
+
   <% end %>
 
 </div>

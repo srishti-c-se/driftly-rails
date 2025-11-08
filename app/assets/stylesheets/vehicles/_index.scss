@@ -1,8 +1,7 @@
 .Title {
-  font-family: 'Playfair Display', 'Georgia', serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 2.5rem;
-  font-style: italic;
   letter-spacing: 1px;
   line-height: 1.2;
   color: #ffffff;
@@ -12,7 +11,7 @@
 }
 
 h2 {
-  font-family: 'Playfair Display', 'Georgia', serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 1.8rem;
   color: #e0e0e0;
@@ -60,7 +59,8 @@ h2 {
   flex-direction: column;
   justify-content: center;
 }
-.card-body .btn {
+
+.btn {
   border-radius: 25px;
 }
 
